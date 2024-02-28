@@ -12,7 +12,10 @@ We furthur processed the datasets and added the POS tags.
 
 ##Results Reproducing
 First downlaod the pretrained models from this [link](https://drive.google.com/drive/folders/1BXSnDMzPrphriBC7ylJucvWusFEHDLYm?usp=drive_link). Place them inside models folder.
+
+
 Run:
+
 `python Predict.py`
 
 
