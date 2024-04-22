@@ -9,9 +9,6 @@ from seqeval.scheme import IOB2
 import pickle
 
 
-
-
-
 dataset='s800'
 class Trained_model():
     def __init__(self, data):
@@ -24,13 +21,13 @@ class Trained_model():
         return self.tagger
 
 
-##---Read saved model
+##---Read the saved model
 with open(f'models/{dataset}/tagger.pickle', 'rb') as pkl:
-    tag3 = pickle.load(pkl)
+    saved_model = pickle.load(pkl)
     
 
 ##---define a model
-model=Trained_model(tag3).get_model()
+model=Trained_model(saved_model).get_model()
 model.eval()
 
 
@@ -47,7 +44,7 @@ class SentenceFetch(object):
         self.poss=[]
         self.pos=[]
 
-        # make tsv file readable
+        
         with open(self.data) as tsv_f:
             reader = csv.reader(tsv_f,delimiter= ' ',quoting=csv.QUOTE_NONE)
             for row in reader:
@@ -64,7 +61,7 @@ class SentenceFetch(object):
                 else:
                     self.sent.append(row[0])
                     self.pos.append(row[1]) 
-                    self.tag.append(row[2][0])
+                    self.tag.append(row[2])
 
     def getSentences(self):
         return self.sentences
